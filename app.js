@@ -16,7 +16,7 @@ function reply(reply_token) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
     }
-    let body = JSON.stringify({
+    let body = ({
         replyToken: reply_token,
         messages: [
             {
