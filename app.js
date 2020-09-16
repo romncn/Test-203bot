@@ -19,7 +19,7 @@ function reply(reply_token, msg) {
     }
 
     switch (msg) {
-        case 1:
+        case 'no':
             let body = JSON.stringify({
                 replyToken: reply_token,
                 messages: [
@@ -30,7 +30,7 @@ function reply(reply_token, msg) {
                 ]
             })
             return body;
-        case 2:
+        case 'yes':
             let body = JSON.stringify({
                 replyToken: reply_token,
                 messages: [
