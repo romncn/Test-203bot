@@ -16,7 +16,7 @@ function reply(reply_token) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
     }
-    let body = ({
+    let body = JSON.stringify({
         replyToken: reply_token,
         messages: [
             {
@@ -27,57 +27,7 @@ function reply(reply_token) {
                 type: 'text',
                 text: 'How are you?'
             },
-            {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "separator",
-                        "color": "#C3C3C3"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "baseline",
-                        "margin": "lg",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "Merchant",
-                                "align": "start",
-                                "color": "#C3C3C3"
-                            },
-                            {
-                                "type": "text",
-                                "text": "BTS 01",
-                                "align": "end",
-                                "color": "#000000"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "baseline",
-                        "margin": "lg",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "New balance",
-                                "color": "#C3C3C3"
-                            },
-                            {
-                                "type": "text",
-                                "text": "฿ 45.57",
-                                "align": "end"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "separator",
-                        "margin": "lg",
-                        "color": "#C3C3C3"
-                    }
-                ]
-            }
+            
         ]
     })
     request.post({
