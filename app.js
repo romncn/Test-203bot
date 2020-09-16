@@ -27,7 +27,57 @@ function reply(reply_token) {
                 type: 'text',
                 text: 'How are you?'
             },
-            
+            {
+                type: "flex",
+                altText: "Flex Message",
+                contents: {
+                    type: "bubble",
+                    body: {
+                        layout: "vertical",
+                        contents: [
+                            {
+                                type: "text",
+                                align: "center",
+                                weight: "bold",
+                                text: "อยากดูแบบไหนครับ?"
+                            }
+                        ],
+                        type: "box"
+                    },
+                    direction: "ltr",
+                    footer: {
+                        type: "box",
+                        layout: "vertical",
+                        contents: [
+                            {
+                                action: {
+                                    label: "ดูแผนทั้งหมด",
+                                    type: "uri",
+                                    uri: "https://linecorp.com"
+                                },
+                                type: "button",
+                                color: "#C25738",
+                                height: "sm",
+                                margin: "xs",
+                                style: "primary"
+                            },
+                            {
+                                margin: "xs",
+                                color: "#C25738",
+                                height: "sm",
+                                style: "primary",
+                                action: {
+                                    data: "text",
+                                    label: "ดูแผนวันนี้",
+                                    type: "postback",
+                                    text: "ดูแผนวันนี้"
+                                },
+                                type: "button"
+                            }
+                        ]
+                    }
+                }
+            }
         ]
     })
     request.post({
