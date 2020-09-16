@@ -22,7 +22,7 @@ function reply(reply_token, msg) {
         messages: [
             {
                 type: 'text',
-                text: msg
+                text: 'rom'
             },
             {
                 type: "flex",
