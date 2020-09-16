@@ -18,14 +18,67 @@ function reply(reply_token) {
     }
     let body = JSON.stringify({
         replyToken: reply_token,
-        messages: [{
-            type: 'text',
-            text: 'Hello'
-        },
-        {
-            type: 'text',
-            text: 'How are you?'
-        }]
+        messages: [
+            {
+                type: 'text',
+                text: 'Hello'
+            },
+            {
+                type: 'text',
+                text: 'How are you?'
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator",
+                        "color": "#C3C3C3"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "Merchant",
+                                "align": "start",
+                                "color": "#C3C3C3"
+                            },
+                            {
+                                "type": "text",
+                                "text": "BTS 01",
+                                "align": "end",
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "New balance",
+                                "color": "#C3C3C3"
+                            },
+                            {
+                                "type": "text",
+                                "text": "฿ 45.57",
+                                "align": "end"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "lg",
+                        "color": "#C3C3C3"
+                    }
+                ]
+            }
+        ]
     })
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
