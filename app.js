@@ -18,92 +18,92 @@ function reply(reply_token, msg) {
         'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
     }
 
-    switch (msg) {
-        case 'no':
-            let body = JSON.stringify({
-                replyToken: reply_token,
-                messages: [
-                    {
-                        type: 'text',
-                        text: "no"
-                    }
-                ]
-            })
-            return body;
-        case 'yes':
-            let body = JSON.stringify({
-                replyToken: reply_token,
-                messages: [
-                    {
-                        type: 'text',
-                        text: "yes"
-                    }
-                ]
-            })
-            return body;
-        default:
-    }
-
-    // let body = JSON.stringify({
-    //     replyToken: reply_token,
-    //     messages: [
-    //         {
-    //             type: 'text',
-    //             text: msg
-    //         },
-    //         {
-    //             type: "flex",
-    //             altText: "Flex Message",
-    //             contents: {
-    //                 type: "bubble",
-    //                 body: {
-    //                     layout: "vertical",
-    //                     contents: [
-    //                         {
-    //                             type: "text",
-    //                             align: "center",
-    //                             weight: "bold",
-    //                             text: "อยากดูแบบไหนครับ?"
-    //                         }
-    //                     ],
-    //                     type: "box"
-    //                 },
-    //                 direction: "ltr",
-    //                 footer: {
-    //                     type: "box",
-    //                     layout: "vertical",
-    //                     contents: [
-    //                         {
-    //                             action: {
-    //                                 label: "ดูแผนทั้งหมด",
-    //                                 type: "uri",
-    //                                 uri: "https://linecorp.com"
-    //                             },
-    //                             type: "button",
-    //                             color: "#C25738",
-    //                             height: "sm",
-    //                             margin: "xs",
-    //                             style: "primary"
-    //                         },
-    //                         {
-    //                             margin: "xs",
-    //                             color: "#C25738",
-    //                             height: "sm",
-    //                             style: "primary",
-    //                             action: {
-    //                                 data: "text",
-    //                                 label: "ดูแผนวันนี้",
-    //                                 type: "postback",
-    //                                 text: "ดูแผนวันนี้"
-    //                             },
-    //                             type: "button"
-    //                         }
-    //                     ]
+    // switch (msg) {
+    //     case 'no':
+    //         let body = JSON.stringify({
+    //             replyToken: reply_token,
+    //             messages: [
+    //                 {
+    //                     type: 'text',
+    //                     text: "no"
     //                 }
-    //             }
-    //         }
-    //     ]
-    // })
+    //             ]
+    //         })
+    //         return body;
+    //     case 'yes':
+    //         let body = JSON.stringify({
+    //             replyToken: reply_token,
+    //             messages: [
+    //                 {
+    //                     type: 'text',
+    //                     text: "yes"
+    //                 }
+    //             ]
+    //         })
+    //         return body;
+    //     default:
+    // }
+
+    let body = JSON.stringify({
+        replyToken: reply_token,
+        messages: [
+            {
+                type: 'text',
+                text: msg
+            },
+            {
+                type: "flex",
+                altText: "Flex Message",
+                contents: {
+                    type: "bubble",
+                    body: {
+                        layout: "vertical",
+                        contents: [
+                            {
+                                type: "text",
+                                align: "center",
+                                weight: "bold",
+                                text: "อยากดูแบบไหนครับ?"
+                            }
+                        ],
+                        type: "box"
+                    },
+                    direction: "ltr",
+                    footer: {
+                        type: "box",
+                        layout: "vertical",
+                        contents: [
+                            {
+                                action: {
+                                    label: "ดูแผนทั้งหมด",
+                                    type: "uri",
+                                    uri: "https://linecorp.com"
+                                },
+                                type: "button",
+                                color: "#C25738",
+                                height: "sm",
+                                margin: "xs",
+                                style: "primary"
+                            },
+                            {
+                                margin: "xs",
+                                color: "#C25738",
+                                height: "sm",
+                                style: "primary",
+                                action: {
+                                    data: "text",
+                                    label: "ดูแผนวันนี้",
+                                    type: "postback",
+                                    text: "ดูแผนวันนี้"
+                                },
+                                type: "button"
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    })
 
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
