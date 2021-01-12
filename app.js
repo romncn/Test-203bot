@@ -102,7 +102,8 @@ function push(req) {
     }
 
     let body = JSON.stringify({
-        to: "Uda66a8e7400b2e7fafd699f3b294ec4d",
+        // to: "Uda66a8e7400b2e7fafd699f3b294ec4d",
+        replyToken: req.body.events[0].replyToken,
         messages: [
             {
                 type: "text",
