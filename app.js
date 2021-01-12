@@ -107,7 +107,7 @@ function push(req) {
         messages: [
             {
                 type: "text",
-                text: JSON.stringify(req.body)
+                text: 'Hi'
             }
         ]
     })
