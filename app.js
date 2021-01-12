@@ -31,7 +31,11 @@ function reply(reply_token, msg) {
         messages: [
             {
                 type: 'text',
+<<<<<<< HEAD
                 text: msg
+=======
+                text: 'gun'
+>>>>>>> 770ebc49087c8fd2f332349dc718a0501ca77dd6
             },
             {
                 type: "flex",
