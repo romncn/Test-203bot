@@ -11,7 +11,11 @@ app.use(bodyParser.json())
 router.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
-    reply(reply_token, msg)
+    if(msg){
+        console.log('Can Chat!');
+        reply(reply_token, msg)
+    }
+    
     // if(msg === "rom"){
     //    push(req)
     // } else {
