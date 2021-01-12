@@ -102,8 +102,8 @@ function push(req) {
     }
 
     let body = JSON.stringify({
-        // to: "Uda66a8e7400b2e7fafd699f3b294ec4d",
-        replyToken: req.body.events[0].replyToken,
+        to: "Uda66a8e7400b2e7fafd699f3b294ec4d",
+        // replyToken: req.body.events[0].replyToken,
         messages: [
             {
                 type: "text",
@@ -113,7 +113,7 @@ function push(req) {
     })
 
     request.post({
-        url: 'https://api.line.me/v2/bot/message/reply',
+        url: 'https://api.line.me/v2/bot/message/push',
         headers: headers,
         body: body
     }, (err, res, body) => {
