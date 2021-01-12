@@ -10,28 +10,21 @@ app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
-   
-    if(msg === "rom"){
-       push(req)
-    } else {
-        reply(reply_token, msg)
-    }
+    reply(reply_token, msg)
     res.sendStatus(200)
 })
-app.listen(port);
-
+app.listen(port)
 function reply(reply_token, msg) {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
     }
-
     let body = JSON.stringify({
         replyToken: reply_token,
         messages: [
             {
                 type: 'text',
-                text: msg
+                text: 'gun'
             },
             {
                 type: "flex",
@@ -86,7 +79,6 @@ function reply(reply_token, msg) {
             }
         ]
     })
-
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
         headers: headers,
@@ -95,27 +87,3 @@ function reply(reply_token, msg) {
         console.log('status = ' + res.statusCode);
     });
 }
-function push(req) {
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
-    }
-
-    let body = JSON.stringify({
-        to: "Uda66a8e7400b2e7fafd699f3b294ec4d",
-        messages: [
-            {
-                type: "text",
-                text: JSON.stringify(req.body)
-            }
-        ]
-    })
-
-    request.post({
-        url: 'https://api.line.me/v2/bot/message/reply',
-        headers: headers,
-        body: body
-    }, (err, res, body) => {
-        console.log('status = ' + res.statusCode);
-    });
-} 
