@@ -31,11 +31,7 @@ function reply(reply_token, msg) {
         messages: [
             {
                 type: 'text',
-<<<<<<< HEAD
                 text: msg
-=======
-                text: 'gun'
->>>>>>> 770ebc49087c8fd2f332349dc718a0501ca77dd6
             },
             {
                 type: "flex",
@@ -49,7 +45,7 @@ function reply(reply_token, msg) {
                                 type: "text",
                                 align: "center",
                                 weight: "bold",
-                                text: "อยากดูแบบไหนครับ?"
+                                text: "สวัสดีฮับ"
                             }
                         ],
                         type: "box"
@@ -61,28 +57,15 @@ function reply(reply_token, msg) {
                         contents: [
                             {
                                 action: {
-                                    label: "ดูแผนทั้งหมด",
+                                    label: "เปิดเว็บ",
                                     type: "uri",
-                                    uri: "https://linecorp.com"
+                                    uri: "https://liff.line.me/1655576450-r2YQgdEJ"
                                 },
                                 type: "button",
-                                color: "#C25738",
+                                color: "#187bcd",
                                 height: "sm",
                                 margin: "xs",
                                 style: "primary"
-                            },
-                            {
-                                margin: "xs",
-                                color: "#C25738",
-                                height: "sm",
-                                style: "primary",
-                                action: {
-                                    data: "text",
-                                    label: "ดูแผนวันนี้",
-                                    type: "postback",
-                                    text: "ดูแผนวันนี้"
-                                },
-                                type: "button"
                             }
                         ]
                     }
@@ -107,7 +90,6 @@ function push(req) {
 
     let body = JSON.stringify({
         to: "Ufc39dbdef409aab576dd55ecf52ea391",
-        // replyToken: req.body.events[0].replyToken,
         messages: [
             {
                 type: "text",
