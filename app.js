@@ -7,6 +7,7 @@ const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+//Reply Message by ChatBot
 app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
@@ -20,6 +21,13 @@ app.post('/webhook', (req, res) => {
     }
     res.sendStatus(200)
 })
+
+//Push massage by AlertManager
+app.post('/alert', (req, res) => {
+    pushAlert(req);
+    res.sendStatus(200);
+})
+
 app.listen(port);
 
 function reply(reply_token, msg) {
@@ -170,3 +178,29 @@ function push(req) {
         console.log('status = ' + res.statusCode);
     });
 } 
+
+function pushAlert(req) {
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
+    }
+
+    let body = JSON.stringify({
+        to: "Ufc39dbdef409aab576dd55ecf52ea391",
+        messages: [
+            {
+                type: "text",
+                text: JSON.stringify(req.body)
+            }
+        ]
+    })
+
+    request.post({
+        url: 'https://api.line.me/v2/bot/message/push',
+        headers: headers,
+        body: body
+    }, (err, res, body) => {
+        console.log('status = ' + res.statusCode);
+    });
+
+}
