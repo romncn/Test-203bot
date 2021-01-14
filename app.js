@@ -11,10 +11,10 @@ app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
-   
-    if(msg === "rom"){
-       push(req)
-    } else if(msg === "login") {
+
+    if (msg === "rom") {
+        push(req)
+    } else if (msg === "login") {
         replyLogin(reply_token, msg)
     } else {
         reply(reply_token, msg)
@@ -24,7 +24,8 @@ app.post('/webhook', (req, res) => {
 
 //Push massage by AlertManager
 app.post('/alert', (req, res) => {
-    pushAlert(req);
+    let msg = req.body
+    pushAlert(msg);
     res.sendStatus(200);
 })
 
@@ -177,9 +178,9 @@ function push(req) {
     }, (err, res, body) => {
         console.log('status = ' + res.statusCode);
     });
-} 
+}
 
-function pushAlert(req) {
+function pushAlert(msg) {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
@@ -190,7 +191,7 @@ function pushAlert(req) {
         messages: [
             {
                 type: "text",
-                text: JSON.stringify(req.body)
+                text: msg.commonLabels.alertname + '\n' + msg.commonLabels.service + '\n' + msg.commonLabels.severity + '\n' + msg.commonAnnotations.description
             }
         ]
     })
