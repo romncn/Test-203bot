@@ -132,7 +132,7 @@ function broadCastAlert(msg) {
             {
                 type: "text",
                 text: 'Labels' + '\n' +
-                    'AlertName = ' + ' ' + msg.commonLabels.alert_name + '\n' +
+                    'AlertName = ' + ' ' + msg.commonLabels.alert + '\n' +
                     'Service = ' + ' ' + msg.commonLabels.service + '\n' +
                     'Severity = ' + ' ' + msg.commonLabels.severity + '\n' +
                     'Annotations' + '\n' +
