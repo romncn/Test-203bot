@@ -131,7 +131,12 @@ function broadCastAlert(msg) {
             },
             {
                 type: "text",
-                text: msg.commonLabels.alertname + '\n' + msg.commonLabels.service + '\n' + msg.commonLabels.severity + '\n' + msg.commonAnnotations.description
+                text: 'Labels' + '\n' +
+                    'AlertName = ' + ' ' + msg.commonLabels.alert_name + '\n' +
+                    'Service = ' + ' ' + msg.commonLabels.service + '\n' +
+                    'Severity = ' + ' ' + msg.commonLabels.severity + '\n' +
+                    'Annotations' + '\n' +
+                    'Description = ' + ' ' + msg.commonAnnotations.description
             }
         ]
     })
