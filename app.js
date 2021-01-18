@@ -13,7 +13,7 @@ app.post('/webhook', (req, res) => {
     let msg = req.body.events[0].message.text
 
     if (msg === "Test") {
-        broadCast(reply_token)
+        push(msg);
     } else {
         reply(reply_token, msg)
     }
@@ -23,7 +23,7 @@ app.post('/webhook', (req, res) => {
 //Push massage by AlertManager
 app.post('/alert', (req, res) => {
     let msg = req.body
-    pushAlert(msg);
+    broadCastAlert(msg)
     res.sendStatus(200);
 })
 
@@ -92,32 +92,7 @@ function reply(reply_token, msg) {
     });
 }
 
-function broadCast(reply_token) {
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
-    }
-
-    let body = JSON.stringify({
-        replyToken: reply_token,
-        messages: [
-            {
-                type: 'text',
-                text: 'broadcast all user'
-            }
-        ]
-    })
-
-    request.post({
-        url: 'https://api.line.me/v2/bot/message/broadcast',
-        headers: headers,
-        body: body
-    }, (err, res, body) => {
-        console.log('status = ' + res.statusCode);
-    });
-}
-
-function pushAlert(msg) {
+function push(msg) {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
@@ -127,6 +102,34 @@ function pushAlert(msg) {
         to: "Ufc39dbdef409aab576dd55ecf52ea391",
         messages: [
             {
+                type: 'text',
+                text: msg + 'hi user'
+            }
+        ]
+    })
+
+    request.post({
+        url: 'https://api.line.me/v2/bot/message/push',
+        headers: headers,
+        body: body
+    }, (err, res, body) => {
+        console.log('status = ' + res.statusCode);
+    });
+}
+
+function broadCastAlert(msg) {
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {2bBnSBs3jWWl6deWeeGRlY/hwrKmid+DCmyVQZFvPzF8SnK+cTl8ICFTfwid5zUeSv55oLr+6HUIc6VzcWD3SKY8MCOYqSXWX8nZmUPa9PHrmG7xatUxlTWfn+mAK6rMMTmz/PY9JMY4ANUIeZkiIAdB04t89/1O/w1cDnyilFU=}'
+    }
+
+    let body = JSON.stringify({
+        messages: [
+            {
+                type: 'text',
+                text: 'ถ้ารำคาญสามารถบล็อคหรือเปิดแจ้งเตือนบอทตัวนี้ได้เลยครับ'
+            },
+            {
                 type: "text",
                 text: msg.commonLabels.alertname + '\n' + msg.commonLabels.service + '\n' + msg.commonLabels.severity + '\n' + msg.commonAnnotations.description
             }
@@ -134,7 +137,7 @@ function pushAlert(msg) {
     })
 
     request.post({
-        url: 'https://api.line.me/v2/bot/message/push',
+        url: 'https://api.line.me/v2/bot/message/broadcast',
         headers: headers,
         body: body
     }, (err, res, body) => {
