@@ -170,14 +170,10 @@ function giinosBroadCastAlert(msg) {
             },
             {
                 type: "text",
-                text: 'AlertName = ' + ' ' + msg.commonLabels.alertname + '\n' +
-                    'Instance = ' + ' ' + msg.commonLabels.instance + '\n' +
-                    'Job = ' + ' ' + msg.commonLabels.job + '\n' +
-                    'Severity = ' + ' ' + msg.commonLabels.severity + '\n'
-            },
-            {
-                type: 'text',
-                text: JSON.stringify(msg)
+                text: 'AlertName = ' + ' ' + msg.alerts[0].labels.alertname + '\n' +
+                    'Instance = ' + ' ' + msg.alerts[0].labels.instance + '\n' +
+                    'Job = ' + ' ' + msg.alerts[0].labels.job + '\n' +
+                    'Severity = ' + ' ' + msg.alerts[0].labels.alertname.severity + '\n'
             }
         ]
     })
