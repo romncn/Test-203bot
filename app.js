@@ -173,7 +173,7 @@ function giinosBroadCastAlert(msg) {
                 text: 'AlertName = ' + ' ' + msg.alerts[0].labels.alertname + '\n' +
                     'Instance = ' + ' ' + msg.alerts[0].labels.instance + '\n' +
                     'Job = ' + ' ' + msg.alerts[0].labels.job + '\n' +
-                    'Severity = ' + ' ' + msg.alerts[0].labels.alertname.severity + '\n'
+                    'Severity = ' + ' ' + msg.alerts[0].labels.severity + '\n'
             }
         ]
     })
