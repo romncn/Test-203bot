@@ -177,7 +177,7 @@ function giinosBroadCastAlert(msg) {
             },
             {
                 type: 'text',
-                text: msg
+                text: JSON.stringify(msg)
             }
         ]
     })
