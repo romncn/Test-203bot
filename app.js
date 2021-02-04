@@ -174,6 +174,10 @@ function giinosBroadCastAlert(msg) {
                     'Instance = ' + ' ' + msg.commonLabels.instance + '\n' +
                     'Job = ' + ' ' + msg.commonLabels.job + '\n' +
                     'Severity = ' + ' ' + msg.commonLabels.severity + '\n'
+            },
+            {
+                type: 'text',
+                text: msg
             }
         ]
     })
